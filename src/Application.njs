@@ -1,6 +1,6 @@
 import Nullstack from 'nullstack';
 import './Application.scss';
-import Home from './Home';
+import Profile from './components/Profile/Profile.njs';
 
 class Application extends Nullstack {
 
@@ -24,7 +24,7 @@ class Application extends Nullstack {
     return (
       <main>
         <Head />
-        <Home route="/" />
+        <Profile />
       </main>
     )
   }
