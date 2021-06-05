@@ -1,12 +1,15 @@
 import Nullstack from 'nullstack';
-import './RepositoryCard.scss';
+import './Profile.scss';
 
 class Profile extends Nullstack {
   
   render() {
     return (
       <div>
-        <h2>hmartiins</h2>
+        <header>
+          <img src="icon-144x144.png" alt="icon" width="75" height="75" />
+          <h2>hmartiins</h2>
+        </header>
         <span>bio: Lorem ipsum dolor sit amet, consectetur adipisicing</span>
         <span>Seguidores: 15</span>
         <span>Seguindo: 15</span>

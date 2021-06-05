@@ -11,20 +11,33 @@ class Application extends Nullstack {
   renderHead() {
     return (
       <head>
-        <link 
-          href="https://fonts.gstatic.com" rel="preconnect" />
-        <link 
-          href="https://fonts.googleapis.com/css2?family=Crete+Round&family=Roboto&display=swap"
-          rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
       </head> 
     )
+  }
+
+  renderInput() {
+    return(
+      <input type="text" />
+    );
+  }
+
+  renderButton() {
+    return(
+      <button>Buscar</button>
+    );
   }
 
   render() {
     return (
       <main>
         <Head />
-        <Profile />
+        <header>
+          <Input />
+          <Button />
+        </header>
+        {/* <Profile /> */}
       </main>
     )
   }
