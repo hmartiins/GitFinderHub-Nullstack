@@ -33,11 +33,11 @@ class Application extends Nullstack {
     return (
       <main>
         <Head />
-        <header>
+        <header class="header">
           <Input />
           <Button />
         </header>
-        {/* <Profile /> */}
+        <Profile /> 
       </main>
     )
   }
