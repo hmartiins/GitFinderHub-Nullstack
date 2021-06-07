@@ -1,29 +1,46 @@
 import Nullstack from 'nullstack';
 import './Profile.scss';
 
+import axios from 'axios';
+
 class Profile extends Nullstack {
-  
+  data = [];
+
+  prepare({ page }) {
+    page.title = 'Gitfinderhub';
+  }
+
+  async initiate() {
+    await axios.get('https://api.github.com/users/hmartiins')
+      .then((response) => {
+        if(response) {
+          this.data = response.data;
+        }
+      });
+
+  }
+
   render() {
     return (
       <div class="profileCard">
         <header class="profileHeader">
-          <h2>hmartiins</h2>
-          <img src="icon-144x144.png" alt="icon" width="75" height="75" />
+          <h2>{this.data.name}</h2>
+          <img src={this.data.avatar_url} alt="icon" width="75" height="75" />
         </header>
         <p>
-          <span>bio: </span> Lorem ipsum dolor sit amet, consectetur adipisicing
+          <span>bio: </span>{this.data.bio}
         </p>
         <p>
-          <span>Seguidores:</span> 15
+          <span>Seguidores:</span> {this.data.followers}
         </p>
         <p>
-          <span>Seguindo:</span> 15
+          <span>Seguindo:</span> {this.data.following}
         </p>
         <p>
-          <span>Repositórios públicos:</span> 20
+          <span>Repositórios públicos:</span> {this.data.public_repos}
         </p>
         <p>
-          <span>Localização:</span> Peruíbe
+          <span>Localização:</span> {this.data.location}
         </p>
       </div>
     )
