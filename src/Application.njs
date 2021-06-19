@@ -2,7 +2,12 @@ import Nullstack from 'nullstack';
 import './Application.scss';
 import Profile from './components/Profile/Profile.njs';
 
+import axios from 'axios';
+
 class Application extends Nullstack {
+  data = [];
+  searchInput = "";
+  responseApi;
 
   prepare({ page }) {
     page.locale = 'pt-BR';
@@ -19,15 +24,20 @@ class Application extends Nullstack {
 
   renderInput() {
     return(
-      <input type="text" />
+      <input 
+        bind={this.searchInput}
+        value={this.searchInput}
+        type="text"
+        placeholder="username"
+      />
     );
   }
 
-  renderButton() {
-    return(
-      <button>Buscar</button>
-    );
+  async searchProfile() {
+    await axios.get(`https://api.github.com/users/${this.searchInput}`)
+      .then((response) => this.responseApi = response.data);
   }
+
 
   render() {
     return (
@@ -35,9 +45,19 @@ class Application extends Nullstack {
         <Head />
         <header class="header">
           <Input />
-          <Button />
+          <button onclick={this.searchProfile}>Buscar</button>
         </header>
-        <Profile /> 
+        {
+          this.responseApi == undefined ? undefined : <Profile 
+            avatar_url={this.responseApi.avatar_url}
+            name={this.responseApi.name}
+            bio={this.responseApi.bio}
+            followers={this.responseApi.followers}
+            following={this.responseApi.following}
+            public_repos={this.responseApi.public_repos}
+            location={this.responseApi.location}
+          />
+        }
       </main>
     )
   }

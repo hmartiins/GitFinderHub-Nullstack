@@ -1,11 +1,13 @@
-
 .profileCard {
   display: flex;
   flex-direction: column;
 
+  justify-content: center;
+  align-items: center;
+
   background-color: white;
   margin-top: 24px;
-  width: auto;
+  width: 85%;
   padding: 25px;
   border-radius: 5px;
 }
@@ -21,6 +23,8 @@ h2 {
 
 p {
   padding: 7px;
+  width: 80%;
+  word-wrap: break-word;
 }
 
 p:nth-child(2) {
